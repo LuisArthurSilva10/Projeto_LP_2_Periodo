@@ -1,0 +1,16 @@
+HISTÓRIAS DOS USUÁRIOS (Sistema para Assistência técnica):
+
+Cartão: O cliente quer um sistema de gerenciamento de estoque, serviços, clientes e relatórios que permita a utilização sem internet para exercer a consulta, cadastro, remoção, ou a elaboração de relatórios. Quer também um sistema que seja compacto e portátil caso precise usar em outro dispositivo e sua principal queixa com outras ferramentas do mesmo nicho é a falta de intuitividade que os mesmos embarcam para as principais e mais utilizadas funções para as demandas do dia a dia, queixando-se de processos que deveriam ser mais curtos do que realmente são.
+
+Conversa: Entre o desenvolvedor e o cliente foi discutido sobre as funcionalidades que o cliente deseja implementar para o sistema, sobre o tamanho do programa, sobre compatibilidade com outros programas que o usuário possivelmente pode utilizar e sobre a principal queixa do cliente. Quando questionado sobre isso, o cliente alegou que em alguns sistemas que ele utilizou no passado enquanto ele exercia o cadastro de uma ordem de serviço e precisava também adicionar a venda de um produto indexado ao mesmo serviço não era possível pois a parte do cadastro de ordem de serviço e de venda de produtos eram desvinculadas causando um gargalo desnecessário para o cliente fazendo-o queixar-se sobre a intuitividade dos programas.
+
+Confirmação: 
+
+Pergunta (desenvolvedor):Em uma situação que você está cadastrando uma ordem de serviço é necessário ter a integração com a venda de produtos?
+Resposta (cliente): Sim
+Pergunta (desenvolvedor):Em uma situação que você está cadastrando uma venda de produtos é necessário ter a integração com ordem de serviço?
+Resposta (cliente): Não
+Pergunta (desenvolvedor):É necessário ter uma UI(Interface de usuário) que contenha algo além de texto?(Caso sim piora no desempenho)
+Resposta (cliente): Não
+Pergunta (desenvolvedor):É necessário ter uma parte de cadastro de colaboradores para a empresa?
+Resposta (cliente): Não

@@ -1,0 +1,24 @@
+REQUISITOS:
+ -FUNCIONAIS:
+    .Conter uma ferramenta de cadastro de clientes(Incluindo cpf, contato)
+    .Conter uma ferramenta de cadastro de produtos
+    .Conter uma ferramenta de cadastro de vendas(Contendo data, cliente, produto e quantidade)
+    .Conter uma ferramenta de cadastro de ordens de serviço(Contendo data, cliente, valor e etc)
+    .Conter uma ferramenta de consulta de clientes
+    .Conter uma ferramenta de consulta de vendas(O melhor comprador em determinado intervalo de tempo, o produto que mais vende, relatórios diários e semanais, etc)
+    .Conter uma ferramenta de consulta de ordens de serviço
+    .Conter uma ferramenta de remoção de clientes
+    .Conter uma ferramenta de remoção de produtos
+    .Conter uma ferramenta de remoção de vendas
+
+ -NÃO-FUNCIONAIS:
+    .Ser um software compacto(<100 Mb)
+    .Facilidade em cadastrar, consultar e remover
+    .Desempenho(Computar as transações em segundos)
+    .Ser um software portátil
+    .Disponibilidade offline (Não necessitando de internet para concluir algumas demandas)
+
+
+
+
+n
