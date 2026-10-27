@@ -1,6 +1,6 @@
 import consultaProduto
 import consultaCliente
-import cadastroOrdem
+import consultaOrdem
 
 def opcoesConsulta():
     print("\n\n==ÁREA DE CONSULTA==")
@@ -20,7 +20,7 @@ def consultaUniversal():
              consultaCliente.funcaoConsultaClientes()
           
           elif(opcaoCadastro==3):
-             cadastroOrdem.funcaoCadastroOrdem()
+             consultaOrdem.funcaoConsultaOrdem()
           elif(opcaoCadastro==0):
              break
           else:

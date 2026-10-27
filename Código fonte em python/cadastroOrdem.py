@@ -1,4 +1,5 @@
 from classes import OrdemDeServico
+from consultaOrdem import sistema
 
 class cadastroOrdem:
     def __init__(self):
@@ -13,9 +14,15 @@ class cadastroOrdem:
             return
         for ordem in self.listaOrdem:
             print(f"{ordem}")
+    def commit(self):
+        sistema.lista.clear()
+        sistema.lista.extend(self.listaOrdem)
+        
+
+sistemaOrdem=cadastroOrdem()
 
 def funcaoCadastroOrdem():
-    sistemaOrdem=cadastroOrdem()
+  
     while True:
         print("Digite o nome da ordem de serviço: ")
         nome= input()
@@ -28,7 +35,9 @@ def funcaoCadastroOrdem():
         print("Deseja cadastrar outra Ordem de Serviço(s/n): ")
         opcao=input().lower()
         if(opcao!="s"):
-            sistemaOrdem.exibicao()
             break
-print("Saindo da área de cadastro de Ordem de serviço...")
+        
+    sistemaOrdem.exibicao()
+    sistemaOrdem.commit()
+
 
