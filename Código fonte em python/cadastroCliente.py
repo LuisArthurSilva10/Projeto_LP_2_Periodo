@@ -1,4 +1,5 @@
 from classes import Cliente
+from consultaCliente import sistema
 
 class cadastroCliente:
     def __init__(self):
@@ -13,9 +14,13 @@ class cadastroCliente:
             return
         for cliente in self.listaClientes:
             print(f"{cliente}")
+    def commit(self):
+        sistema.lista.extend(self.listaClientes)
+
+sistemaClientes=cadastroCliente()
 
 def funcaoCadastroCliente():
-    sistemaClientes=cadastroCliente()
+   
     while True:
         print("Digite o nome do cliente: ")
         nome=input()
@@ -31,10 +36,10 @@ def funcaoCadastroCliente():
         print("Deseja cadastrar outro cliente?(s/n): ")
         opcao=input()
         if(opcao!="s"):
-            sistemaClientes.exibicao()
-            break
-
-print("Saindo da área de cadastro de clientes...")
+          break
+    sistemaClientes.exibicao()
+    sistemaClientes.commit()
+    
 
 
 

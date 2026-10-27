@@ -1,5 +1,5 @@
-
 import cadastro
+import consulta
 
 def exibirOpcoes():
     print("\n\n--Sistema para Assistência Técnica--")
@@ -18,7 +18,7 @@ while True:
          cadastro.cadastroUniversal()
     
     elif(opcaoInicial==2):
-        print("Consulta")
+        consulta.consultaUniversal()
     
     
     elif(opcaoInicial==3):

@@ -26,7 +26,7 @@ class OrdemDeServico:
 
 class Cliente:
     def __init__(self,nome,contato,cpf):
-        self.id=proximoId
+        self.id=proximoId()
         self.nome=nome
         self.contato=contato
         self.cpf=cpf
