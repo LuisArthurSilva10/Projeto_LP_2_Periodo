@@ -15,7 +15,6 @@ class consultaProdutos:
 sistema=consultaProdutos()
 
 def funcaoConsultaProdutos():
-
     sistema.exibicao()
     
 
