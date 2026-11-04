@@ -1,5 +1,6 @@
 from classes import Cliente
-from consultaCliente import sistema
+from classes import ClientesIndexados
+from consultaCliente import sistemaConsultaCliente
 
 class cadastroCliente:
     def __init__(self):
@@ -15,9 +16,10 @@ class cadastroCliente:
         for cliente in self.listaClientes:
             print(f"{cliente}")
     def commit(self):
-        sistema.lista.extend(self.listaClientes)
+      sistemaConsultaCliente.lista.extend(self.listaClientes)
 
 sistemaClientes=cadastroCliente()
+sistemaClientesIndexados=ClientesIndexados()
 
 def funcaoCadastroCliente():
    
@@ -30,7 +32,7 @@ def funcaoCadastroCliente():
         cpf=input()
 
         cliente=Cliente(nome,contato,cpf)
-
+        sistemaClientesIndexados.adicionar(cliente)
         sistemaClientes.cadastro(cliente)
 
         print("Deseja cadastrar outro cliente?(s/n): ")

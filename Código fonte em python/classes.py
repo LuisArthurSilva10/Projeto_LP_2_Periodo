@@ -45,3 +45,10 @@ class Cliente:
     def __str__(self):
           return f"Id: {self.id} || Cliente: {self.nome} | Contato: {self.contato} | Cpf: {self.cpf}"
 
+class ClientesIndexados:
+    def __init__(self):
+        self.clientes={}
+    def adicionar(self, clientesClasse=Cliente):
+        self.clientes[clientesClasse.id]=clientesClasse
+    def buscarPorId(self,idClientes:int):
+        return self.clientes.get(idClientes)

@@ -1,5 +1,8 @@
-from consultaProduto import sistema
-from classes import Estoque
+from consultaProduto import sistemaConsultaProdutos
+from consultaCliente import sistemaConsultaCliente
+from cadastroProduto import sistemaEstoque
+from cadastroCliente import sistemaClientesIndexados
+
 from itertools import count
 
 class vendaDeProduto:
@@ -11,7 +14,23 @@ class vendaDeProduto:
         self.quantidade=quantidade
         self.data=data 
     def __str__(self):
-            return f"Id: {self.id} || Produto: {self.nome} | Preço: R$ {self.preco:.2f} | Quantidade: Und. {self.quantidade}"
+            return f"Id: {self.id} || Produto: {self.produto} | Comprador:  {self.cliente} | Quantidade: Und. {self.quantidade} | Data: Und. {self.data}"
+
+class cadastroVendaProduto:
+    def __init__(self):
+        self.listaVendaProduto=[]
+    def cadastro(self,vendaProduto):
+        self.listaVendaProduto.append(vendaProduto)
+        print("\nCadastro feito com sucesso\n")
+    def exibicao(self):
+        print("\n\n==Lista de vendas de produtos cadastradas==")
+        if not self.listaVendaProduto:
+            print("Nenhuma venda cadastrada")
+            return
+        for vendaDeProduto in self.listaVendaProduto:
+            print(f"{vendaDeProduto}")
+    #def commit(self):
+     #   sistema.lista.extend(self.listaClientes)
 
 class data:
      def __init__(self,dia,mes,ano):
@@ -21,31 +40,48 @@ class data:
      def __str__(self):
        return f"{self.dia}/{self.mes}/{self.ano}"
 
+sistemaVendaProdutos=cadastroVendaProduto()
+
 def funcaoVendaProduto():
+    
+   while True: 
     print("Selecione com base no ID o produto vendido: \n")
-    sistema.exibicao()
+    sistemaConsultaProdutos.exibicao()
     opcaoProduto=int(input())
-    produtoSelecionado=Estoque.buscarPorId(opcaoProduto)
+    produtoSelecionado=sistemaEstoque.buscarPorId(opcaoProduto)
+    
     print("Digite a quantidade vendida do produto: ")
     qntVendida=int(input())
     if(produtoSelecionado.quantidade<qntVendida):
          print("Estoque insuficiente.")
          return
+    
     produtoSelecionado.quantidade -=qntVendida
     total= qntVendida * produtoSelecionado.preco
-    dataProduto=data
+    
+
     print("Digite o ano da venda: ")
     ano=int(input())
-    dataProduto.ano=ano
     print("Digite o mês da venda: ")
     mes=int(input())
-    dataProduto.mes=mes
     print("Digite o dia da venda: ")
     dia=int(input())
-    dataProduto.dia=dia
-    vendaDeProduto.data=dataProduto
+    dataProduto=data(dia,mes,ano)
 
     print("Escolha com base no ID o comprador: ")
+    sistemaConsultaCliente.exibicao()
+    opcaoCliente=int(input())
+    clienteSelecionado=sistemaClientesIndexados.buscarPorId(opcaoCliente)
+
+    vendaCadastrada=vendaDeProduto(clienteSelecionado,produtoSelecionado,dataProduto,qntVendida)
+    sistemaVendaProdutos.cadastro(vendaCadastrada)
+    print("Deseja cadastrar outra venda?(s/n): ")
+    opcao=input().lower()
+    if(opcao !="s"):
+        break
+        
+   sistemaVendaProdutos.exibicao()
+
 
             
 

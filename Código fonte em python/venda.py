@@ -1,4 +1,5 @@
 import vendaProduto
+from classes import Estoque
 
 def opcoesVenda():
     print("\n\n==ÁREA DE VENDA==")

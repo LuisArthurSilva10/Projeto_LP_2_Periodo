@@ -1,5 +1,6 @@
 from classes import Produto
-from consultaProduto import sistema
+from classes import Estoque
+from consultaProduto import sistemaConsultaProdutos
 
 
 
@@ -18,12 +19,13 @@ class cadastroProdutos:
         for produto in self.listaProdutos:
             print(f"{produto}")
     def commit(self ):
-        sistema.lista.clear()
-        sistema.lista.extend(self.listaProdutos)
+        sistemaConsultaProdutos.lista.clear()
+        sistemaConsultaProdutos.lista.extend(self.listaProdutos)
 
        
 
 sistemaProdutos=cadastroProdutos()
+sistemaEstoque=Estoque()
 
 def funcaoCadastroProdutos():
    
@@ -37,6 +39,7 @@ def funcaoCadastroProdutos():
        quantidade = int(input())
 
        produtoCadastrado=Produto(nome,preco,quantidade)
+       sistemaEstoque.adicionar(produtoCadastrado)
        sistemaProdutos.cadastro(produtoCadastrado)
       
        print("Deseja cadastrar outro produto?(s/n)")
@@ -46,5 +49,6 @@ def funcaoCadastroProdutos():
        
     sistemaProdutos.exibicao()
     sistemaProdutos.commit()
+    
 
     

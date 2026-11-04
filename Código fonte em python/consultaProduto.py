@@ -12,9 +12,9 @@ class consultaProdutos:
         for produto in self.lista:
             print(f"{produto}")
 
-sistema=consultaProdutos()
+sistemaConsultaProdutos=consultaProdutos()
 
 def funcaoConsultaProdutos():
-    sistema.exibicao()
+    sistemaConsultaProdutos.exibicao()
     
 
