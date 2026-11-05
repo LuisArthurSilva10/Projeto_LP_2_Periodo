@@ -17,7 +17,7 @@ def consultaUniversal():
              consultaProduto.funcaoConsultaProdutos()
           
           elif(opcaoCadastro==2):
-             consultaCliente.funcaoConsultaClientes()
+             consultaCliente.funcaoConsultaCliente()
           
           elif(opcaoCadastro==3):
              consultaOrdem.funcaoConsultaOrdem()

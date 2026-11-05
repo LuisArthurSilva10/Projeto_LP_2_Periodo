@@ -1,54 +1,23 @@
 from classes import Produto
-from classes import Estoque
-from consultaProduto import sistemaConsultaProdutos
+from singletonProdutos import repoProdutos
 
-
-
-class cadastroProdutos:
-    
-    def __init__ (self):
-        self.listaProdutos=[]
-    def cadastro (self,produto):
-        self.listaProdutos.append(produto)
-        print("Cadastro feito com sucesso!")
-    def exibicao (self):
-        print("\n\n==Lista dos produtos cadastrados==")
-        if not self.listaProdutos:
-            print("Nenhum produto cadastrado no momento")
-            return
-        for produto in self.listaProdutos:
-            print(f"{produto}")
-    def commit(self ):
-        sistemaConsultaProdutos.lista.clear()
-        sistemaConsultaProdutos.lista.extend(self.listaProdutos)
-
-       
-
-sistemaProdutos=cadastroProdutos()
-sistemaEstoque=Estoque()
-
-def funcaoCadastroProdutos():
-   
-
+def funcaoCadastroProduto():
     while True:
-       print(f"\nDigite o nome do produto: ")
-       nome = input()
-       print(f"Digite o preço do produto {nome}: ")
-       preco = float(input())
-       print(f"Digite a quantidade de unidades disponíveis do produto {nome}")
-       quantidade = int(input())
+        nome    = input("Digite o nome do produto: ")
+        preco = float(input("Digite o preço do produto: "))
+        quantidade = int(input("Digite a quantidade de unidades do produto): "))
 
-       produtoCadastrado=Produto(nome,preco,quantidade)
-       sistemaEstoque.adicionar(produtoCadastrado)
-       sistemaProdutos.cadastro(produtoCadastrado)
-      
-       print("Deseja cadastrar outro produto?(s/n)")
-       opcao=input().lower()
-       if(opcao!="s"):
-           break
-       
-    sistemaProdutos.exibicao()
-    sistemaProdutos.commit()
-    
+        produto = Produto(nome,preco,quantidade)
 
-    
+        if repoProdutos.adicionar(produto):
+            print("Cadastro feito com sucesso.")
+        else:
+            print("Produto já cadastrado (ID duplicado).")
+
+        if input("Deseja cadastrar outro cliente? (s/n): ") != "s":
+            break
+
+    print("\n==Lista de produtos cadastrados==")
+    for p in repoProdutos.listar():
+        print(p)
+    return

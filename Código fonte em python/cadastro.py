@@ -14,7 +14,7 @@ def cadastroUniversal():
           opcoesCadastro()          
           opcaoCadastro=int(input())
           if(opcaoCadastro==1):
-             cadastroProduto.funcaoCadastroProdutos()
+             cadastroProduto.funcaoCadastroProduto()
           
           elif(opcaoCadastro==2):
              cadastroCliente.funcaoCadastroCliente()

@@ -1,15 +1,13 @@
 import vendaProduto
-from classes import Estoque
 
 def opcoesVenda():
     print("\n\n==ÁREA DE VENDA==")
     print("1-Produto")
     print("2-Ordem de serviço")
     print("0-Sair")
-
-def vendaUniversal():
-    opcoesVenda()          
+def vendaUniversal():          
     while True:    
+          opcoesVenda()
           opcaoVenda=int(input())
           if(opcaoVenda==1):
             vendaProduto.funcaoVendaProduto()

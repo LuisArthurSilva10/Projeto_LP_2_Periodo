@@ -1,91 +1,91 @@
-from consultaProduto import sistemaConsultaProdutos
-from consultaCliente import sistemaConsultaCliente
-from cadastroProduto import sistemaEstoque
-from cadastroCliente import sistemaClientesIndexados
-
-from itertools import count
-
-class vendaDeProduto:
-    _ids=count(1)
-    def __init__(self,cliente,produto,data,quantidade):
-        self.id=next(vendaDeProduto._ids)
-        self.cliente=cliente 
-        self.produto=produto
-        self.quantidade=quantidade
-        self.data=data 
-    def __str__(self):
-            return f"Id: {self.id} || Produto: {self.produto} | Comprador:  {self.cliente} | Quantidade: Und. {self.quantidade} | Data: Und. {self.data}"
-
-class cadastroVendaProduto:
-    def __init__(self):
-        self.listaVendaProduto=[]
-    def cadastro(self,vendaProduto):
-        self.listaVendaProduto.append(vendaProduto)
-        print("\nCadastro feito com sucesso\n")
-    def exibicao(self):
-        print("\n\n==Lista de vendas de produtos cadastradas==")
-        if not self.listaVendaProduto:
-            print("Nenhuma venda cadastrada")
-            return
-        for vendaDeProduto in self.listaVendaProduto:
-            print(f"{vendaDeProduto}")
-    #def commit(self):
-     #   sistema.lista.extend(self.listaClientes)
-
-class data:
-     def __init__(self,dia,mes,ano):
-          self.dia=dia
-          self.mes=mes
-          self.ano=ano
-     def __str__(self):
-       return f"{self.dia}/{self.mes}/{self.ano}"
-
-sistemaVendaProdutos=cadastroVendaProduto()
+from singletonProdutos import repoProdutos
+from singletonCliente import repoClientes
+import cadastroCliente
+from singletonVendas import repoVendas
+from classes import vendaDeProduto, Data
 
 def funcaoVendaProduto():
-    
-   while True: 
-    print("Selecione com base no ID o produto vendido: \n")
-    sistemaConsultaProdutos.exibicao()
-    opcaoProduto=int(input())
-    produtoSelecionado=sistemaEstoque.buscarPorId(opcaoProduto)
-    
-    print("Digite a quantidade vendida do produto: ")
-    qntVendida=int(input())
-    if(produtoSelecionado.quantidade<qntVendida):
-         print("Estoque insuficiente.")
-         return
-    
-    produtoSelecionado.quantidade -=qntVendida
-    total= qntVendida * produtoSelecionado.preco
-    
+    while True:
+        print("\nEscolha com base no ID o comprador:")
+        print("(0 para cadastrar novo cliente)")
+        for c in repoClientes.listar():
+            print(c)
 
-    print("Digite o ano da venda: ")
-    ano=int(input())
-    print("Digite o mês da venda: ")
-    mes=int(input())
-    print("Digite o dia da venda: ")
-    dia=int(input())
-    dataProduto=data(dia,mes,ano)
+        try:
+            opcaoCliente = int(input())
+        except ValueError:
+            print("ID inválido.")
+            continue
 
-    print("Escolha com base no ID o comprador: ")
-    sistemaConsultaCliente.exibicao()
-    opcaoCliente=int(input())
-    clienteSelecionado=sistemaClientesIndexados.buscarPorId(opcaoCliente)
+        if opcaoCliente == 0:
+            cadastroCliente.funcaoCadastroCliente()
+            continue
 
-    vendaCadastrada=vendaDeProduto(clienteSelecionado,produtoSelecionado,dataProduto,qntVendida)
-    sistemaVendaProdutos.cadastro(vendaCadastrada)
-    print("Deseja cadastrar outra venda?(s/n): ")
-    opcao=input().lower()
-    if(opcao !="s"):
-        break
-        
-   sistemaVendaProdutos.exibicao()
+        clienteSelecionado = repoClientes.buscar_por_id(opcaoCliente)
+        if clienteSelecionado is None:           
+            print("Cliente não encontrado.")
+            continue
 
+        print("\nSelecione com base no ID o produto vendido:")
 
-            
+        for p in repoProdutos.listar():
+            print(p)
+        try:
+            opcaoProduto = int(input())
+        except ValueError:
+            print("ID inválido.")
+            continue
 
+        produtoSelecionado = repoProdutos.buscar_por_id(opcaoProduto)
 
+        if produtoSelecionado is None:           
+            print("Produto não encontrado.")
+            continue
 
+        try:
+            qntVendida = int(input("Digite a quantidade vendida: "))
+        except ValueError:
+            print("Quantidade inválida.")
+            continue
 
+        if produtoSelecionado.quantidade < qntVendida:
+            print("Estoque insuficiente.")
+            continue                            
 
+        produtoSelecionado.quantidade -= qntVendida
+        total = qntVendida * produtoSelecionado.preco
+
+        try:
+            ano = int(input("Digite o ano da venda: "))
+            mes = int(input("Digite o mês da venda: "))
+            dia = int(input("Digite o dia da venda: "))
+        except ValueError:
+            print("Data inválida.")
+            produtoSelecionado.quantidade += qntVendida   # desfaz baixa
+            continue
+
+        dataProduto = Data(dia, mes, ano)
+
+        vendaCadastrada = vendaDeProduto(
+            clienteSelecionado.nome,
+            produtoSelecionado.nome,
+            dataProduto,
+            qntVendida,
+            total,
+        )
+
+        if repoVendas.adicionar(vendaCadastrada):
+            print("Venda registrada com sucesso.")
+        else:
+            print("ID de venda duplicado.")
+
+        if input("Deseja cadastrar outra venda? (s/n): ").lower() != "s":
+            break
+
+    print("\n==Lista de vendas cadastradas==")
+    vendas = repoVendas.listar()
+    if not vendas:
+        print("Nenhuma venda cadastrada")
+    else:
+        for v in vendas:
+            print(v)

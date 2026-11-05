@@ -1,43 +1,22 @@
 from classes import OrdemDeServico
-from consultaOrdem import sistema
-
-class cadastroOrdem:
-    def __init__(self):
-        self.listaOrdem=[]
-    def cadastro(self,Ordem):
-        self.listaOrdem.append(Ordem)
-        print("\nCadastro feito com sucesso!")
-    def exibicao(self):
-        print("\n\n==Lista de Ordens de serviço cadastradas==")
-        if not(self.listaOrdem):
-            print("Nenhuma Ordem de serviço cadastrada.")
-            return
-        for ordem in self.listaOrdem:
-            print(f"{ordem}")
-    def commit(self):
-        sistema.lista.clear()
-        sistema.lista.extend(self.listaOrdem)
-        
-
-sistemaOrdem=cadastroOrdem()
+from singletonOrdem import repoServico
 
 def funcaoCadastroOrdem():
-  
     while True:
-        print("Digite o nome da ordem de serviço: ")
-        nome= input()
-        print("Digite o preço da ordem de serviço: ")
-        preco=float(input())
+        nome    = input("Digite o nome da ordem de serviço: ")
+        preco = float(input("Digite o preço da ordem de serviço: "))
 
-        ordemCadastrada=OrdemDeServico(nome,preco)
-        sistemaOrdem.cadastro(ordemCadastrada)
+        servico = OrdemDeServico(nome,preco)
 
-        print("Deseja cadastrar outra Ordem de Serviço(s/n): ")
-        opcao=input().lower()
-        if(opcao!="s"):
+        if repoServico.adicionar(servico):
+            print("Cadastro feito com sucesso.")
+        else:
+            print("Ordem de serviço já cadastrada (ID duplicado).")
+
+        if input("Deseja cadastrar outro serviço? (s/n): ") != "s":
             break
-        
-    sistemaOrdem.exibicao()
-    sistemaOrdem.commit()
 
-
+    print("\n==Lista de ordens de serviço cadastradas==")
+    for p in repoServico.listar():
+        print(p)
+    return
