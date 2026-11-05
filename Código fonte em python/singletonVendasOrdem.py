@@ -1,0 +1,2 @@
+from classes import RepositorioVendasServico
+repoVendasServico=RepositorioVendasServico()

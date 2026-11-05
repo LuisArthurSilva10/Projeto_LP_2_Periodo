@@ -1,4 +1,5 @@
 import vendaProduto
+import vendaOrdem
 
 def opcoesVenda():
     print("\n\n==ÁREA DE VENDA==")
@@ -12,7 +13,7 @@ def vendaUniversal():
           if(opcaoVenda==1):
             vendaProduto.funcaoVendaProduto()
           elif(opcaoVenda==2):
-             print("Venda Ordem")
+             vendaOrdem.funcaoVendaOrdem()
           elif(opcaoVenda==0):
              break
           else:
