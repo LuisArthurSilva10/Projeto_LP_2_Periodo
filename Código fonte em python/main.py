@@ -7,6 +7,7 @@ def exibirOpcoes():
     print("1-Cadastro")
     print("2-Consulta")
     print("3-Vender")
+    print("4-Edição")
     print("0-Sair")
 
 
