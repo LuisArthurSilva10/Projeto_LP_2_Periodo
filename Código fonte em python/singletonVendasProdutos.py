@@ -1,2 +1,2 @@
 from classes import RepositorioVendasProdutos
-repoVendas=RepositorioVendasProdutos()
+repoVendasProdutos=RepositorioVendasProdutos()

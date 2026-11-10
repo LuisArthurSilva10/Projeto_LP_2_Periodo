@@ -1,7 +1,7 @@
 from singletonProdutos import repoProdutos
 from singletonCliente import repoClientes
 import cadastroCliente
-from singletonVendasProdutos import RepositorioVendasProdutos
+from singletonVendasProdutos import repoVendasProdutos
 from classes import vendaDeProduto, Data
 
 def funcaoVendaProduto():
@@ -67,14 +67,14 @@ def funcaoVendaProduto():
         dataProduto = Data(dia, mes, ano)
 
         vendaCadastrada = vendaDeProduto(
-            clienteSelecionado.nome,
-            produtoSelecionado.nome,
+            clienteSelecionado,
+            produtoSelecionado,
             dataProduto,
             qntVendida,
             total,
         )
 
-        if RepositorioVendasProdutos.adicionar(vendaCadastrada):
+        if repoVendasProdutos.adicionar(vendaCadastrada):
             print("Venda registrada com sucesso.")
         else:
             print("ID de venda duplicado.")
@@ -83,7 +83,7 @@ def funcaoVendaProduto():
             break
 
     print("\n==Lista de vendas cadastradas==")
-    vendas = RepositorioVendasProdutos.listar()
+    vendas = repoVendasProdutos.listar()
     if not vendas:
         print("Nenhuma venda cadastrada")
     else:

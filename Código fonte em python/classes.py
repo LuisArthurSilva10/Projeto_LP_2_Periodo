@@ -127,6 +127,33 @@ class vendaDeProduto:
     def __str__(self):
             return f"\nId Venda: {self.id} || Produto: {self.produto} || Comprador:  {self.cliente} || Quantidade: Und. {self.quantidade} || Data:{self.data} Total: R$ {self.total}"
 
+class RepositorioVendasProdutos:
+    def __init__(self):
+        self._vendas = {}        
+
+    def adicionar(self, venda) -> bool:
+        if venda.id in self._vendas:
+            return False
+        self._vendas[venda.id] = venda
+        return True
+    
+    def remover(self, id_venda) -> bool:
+        return self._vendas.pop(id_venda, None) is not None
+
+    def buscar_por_id(self, id_venda):
+        return self._vendas.get(id_venda)
+
+    def buscar_por_cliente(self, cliente):
+        return [v for v in self._vendas.values()
+                if getattr(v, "cliente", None) is not None
+                and v.cliente.id == cliente.id]
+
+    def listar(self):
+        return list(self._vendas.values())
+
+    def __len__(self):
+        return len(self._vendas)
+
 class vendaDeServico:
     _ids=count(1)
     def __init__(self,cliente,servico,data,total):
@@ -138,46 +165,6 @@ class vendaDeServico:
     def __str__(self):
             return f"\nId Venda: {self.id} || Ordem de Serviço: {self.servico} || Comprador:  {self.cliente} || Data:{self.data} Total: R$ {self.total}"
 
-
-class Data:
-     def __init__(self,dia,mes,ano):
-          self.dia=dia
-          self.mes=mes
-          self.ano=ano
-     def __str__(self):
-       return f"{self.dia}/{self.mes}/{self.ano}"
-
-class RepositorioVendasProdutos:
-    def __init__(self):
-        self._vendas = {}          # id -> vendaDeProduto  (fonte única)
-
-    # ---------- INDEXAR (escrita) ----------
-    def adicionar(self, venda) -> bool:
-        if venda.id in self._vendas:                 # já indexada?
-            return False
-        self._vendas[venda.id] = venda               # indexa e guarda
-        return True
-
-    def remover(self, id_venda) -> bool:
-        return self._vendas.pop(id_venda, None) is not None
-
-    # ---------- CONSULTAR (leitura) ----------
-    def buscar_por_id(self, id_venda):
-        return self._vendas.get(id_venda)            # O(1) via índice
-
-    def buscar_por_cliente(self, cliente):
-        """Todas as vendas de um cliente (por id do cliente)."""
-        return [v for v in self._vendas.values()
-                if getattr(v, "cliente", None) is not None
-                and v.cliente.id == cliente.id]
-
-    def listar(self):
-        return list(self._vendas.values())           # visão derivada
-
-    def __len__(self):
-        return len(self._vendas)
-
-    
 class RepositorioVendasServico:
     def __init__(self):
         self._vendas = {}          
@@ -207,3 +194,12 @@ class RepositorioVendasServico:
 
     def __len__(self):
         return len(self._vendas)
+
+
+class Data:
+     def __init__(self,dia,mes,ano):
+          self.dia=dia
+          self.mes=mes
+          self.ano=ano
+     def __str__(self):
+       return f"{self.dia}/{self.mes}/{self.ano}"

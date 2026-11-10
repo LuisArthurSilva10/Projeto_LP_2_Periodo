@@ -1,12 +1,15 @@
 import consultaProduto
 import consultaCliente
 import consultaOrdem
+import consultaVendaProduto
 
 def opcoesConsulta():
     print("\n\n==ÁREA DE CONSULTA==")
     print("1-Produto")
     print("2-Cliente")
     print("3-Ordem de serviço")
+    print("4-Venda de produto")
+    print("5-Venda de ordem de serviço")
     print("0-Sair")
 
 def consultaUniversal():
@@ -15,12 +18,14 @@ def consultaUniversal():
           opcaoCadastro=int(input())
           if(opcaoCadastro==1):
              consultaProduto.funcaoConsultaProdutos()
-          
           elif(opcaoCadastro==2):
              consultaCliente.funcaoConsultaCliente()
-          
           elif(opcaoCadastro==3):
              consultaOrdem.funcaoConsultaOrdem()
+          elif(opcaoCadastro==4):
+              consultaVendaProduto.funcaoVendaProduto()
+          elif(opcaoCadastro==5):
+              consultaOrdem.funcaoConsultaOrdem()
           elif(opcaoCadastro==0):
              break
           else:

@@ -1,1 +1,0 @@
-from singletonVendasProdutos import repoVendas
