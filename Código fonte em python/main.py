@@ -1,6 +1,7 @@
 import cadastro
 import consulta
 import venda
+import edicao
 
 def exibirOpcoes():
     print("\n\n--Sistema para Assistência Técnica--")
@@ -9,8 +10,6 @@ def exibirOpcoes():
     print("3-Vender")
     print("4-Edição")
     print("0-Sair")
-
-
 
 while True:
     exibirOpcoes()
@@ -24,6 +23,8 @@ while True:
     
     elif(opcaoInicial==3):
          venda.vendaUniversal()
+    elif(opcaoInicial==4):
+             edicao.edicaoUniversal()
 
     elif(opcaoInicial==0):
         break

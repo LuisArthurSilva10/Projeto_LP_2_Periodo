@@ -14,7 +14,7 @@ def funcaoCadastroProduto():
         else:
             print("Produto já cadastrado (ID duplicado).")
 
-        if input("Deseja cadastrar outro cliente? (s/n): ") != "s":
+        if input("Deseja cadastrar outro produto? (s/n): ") != "s":
             break
 
     print("\n==Lista de produtos cadastrados==")

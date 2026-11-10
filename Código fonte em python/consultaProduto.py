@@ -3,5 +3,5 @@ def funcaoConsultaProdutos():
  if not repoProdutos.listar():
      print("Nenhum produto cadastrado.")
  else:
-    for produtos in repoProdutos:
+    for produtos in repoProdutos.listar():
         print(produtos)
