@@ -2,6 +2,7 @@ import consultaProduto
 import consultaCliente
 import consultaOrdem
 import consultaVendaProduto
+import consultaVendaOrdem
 
 def opcoesConsulta():
     print("\n\n==ÁREA DE CONSULTA==")
@@ -25,7 +26,7 @@ def consultaUniversal():
           elif(opcaoCadastro==4):
               consultaVendaProduto.funcaoVendaProduto()
           elif(opcaoCadastro==5):
-              consultaOrdem.funcaoConsultaOrdem()
+              consultaVendaOrdem.funcaoVendaOrdem()
           elif(opcaoCadastro==0):
              break
           else:
