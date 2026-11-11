@@ -29,7 +29,7 @@ def funcaoEdicaoCliente():
       repoClientes.remover(escolha)
       print("Produto editado com sucesso.")
 
-    print("Deseja editar outro produto?(s/n)")
+    print("Deseja editar outro Cliente?(s/n)")
     escolhaLoop=input()
     if(escolhaLoop!="s"):
       break 

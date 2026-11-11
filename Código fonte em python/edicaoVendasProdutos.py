@@ -42,6 +42,7 @@ def funcaoEdicaoVendasProdutos():
           vendaProdutoEscolhida.quantidade=quantidadeAtual
           vendaProdutoEscolhida.produto.quantidade-=vendaProdutoEscolhida.quantidade
           vendaProdutoEscolhida.total=vendaProdutoEscolhida.produto.preco*vendaProdutoEscolhida.quantidade
+          break
 
     elif(opcaoEdicao==3):
         print("Digite qual é o comprador: ")
@@ -69,6 +70,7 @@ def funcaoEdicaoVendasProdutos():
 
     elif(opcaoEdicao==5):
           repoVendasProdutos.remover(escolha)
+    print("Deseja editar outra venda de produto?(s/n)")
     escolhaLoop=input()
     if(escolhaLoop!="s"):
       break 

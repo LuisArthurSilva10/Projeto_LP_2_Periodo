@@ -2,12 +2,14 @@ REQUISITOS:
  -FUNCIONAIS:
     .Conter uma ferramenta de cadastro de clientes(Incluindo cpf, contato)
     .Conter uma ferramenta de cadastro de produtos
-    .Conter uma ferramenta de cadastro de vendas(Contendo data, cliente, produto, quantidade e valor total)
-    .Conter uma ferramenta de cadastro de ordens de serviço(Contendo data, cliente, valor e etc)
+    .Conter uma ferramenta de cadastro de vendas de produtos(Contendo data, cliente, produto, quantidade e valor total)
+    .Conter uma ferramenta de cadastro de ordens de serviço
+    .Conter uma ferramenta de cadastro de vendas de ordens de serviço(Contendo data, cliente, valor e etc)
     .Conter uma ferramenta de consulta de clientes
     .Conter uma ferramenta de consulta de produtos
     .Conter uma ferramenta de consulta de ordens de serviço
-    .Conter uma ferramenta de consulta de vendas(O melhor comprador em determinado intervalo de tempo, o produto que mais vende, etc)
+    .Conter uma ferramenta de consulta de vendas de produtos
+    .Conter uma ferramenta de consulta de vendas de ordens de serviço
     .Conter uma ferramenta de edição/remoção de clientes
     .Conter uma ferramenta de edição/remoção de produtos
     .Conter uma ferramenta de edição/remoção de vendas

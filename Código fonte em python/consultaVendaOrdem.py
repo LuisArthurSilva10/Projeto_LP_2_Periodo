@@ -57,12 +57,22 @@ def funcaoFiltrarDia(vendas:list,ano:int,mes:int,dia_inicial:int,dia_final:int):
     print(f"Quantidade de vendas:{quantidade}")
     print(f"Período:{dia_inicial}/{mes}/{ano} -> {dia_final}/{mes}/{ano}")
 
+def funcaoMelhoresVendasTotal(compradores):
+    n=len(compradores)
+    for i in range(n):
+        for j in range(n-i-1):
+            if(compradores[j].preco<compradores[j+1].preco):
+                temp=compradores[j]
+                compradores[j]=compradores[j+1]
+                compradores[j+1]=temp
+    return compradores
 
 def funcaoVendaOrdem():
         print("Opções de consulta das vendas: ")
         print("1-Consulta geral")
         print("2-Consulta com cliente")
         print("3-Consulta com tempo")
+        print("4-Consulta de melhores vendas")
         opcao=int(input())
         if(opcao==1):
             for v in repoVendasServico.listar():
@@ -112,6 +122,11 @@ def funcaoVendaOrdem():
                 print("Digite o dia final: ")
                 diaFinal=int(input())
                 funcaoFiltrarDia(repoVendasServico.listar(),ano,mes,diaInicial,diaFinal)
+        elif(escolha==4):
+            lista=funcaoMelhoresVendasTotal(repoVendasServico)
+            for i in lista:
+                print(i)
+
 
             
 
