@@ -62,8 +62,8 @@ def funcaoVendaOrdem():
 
 
         vendaCadastrada = vendaDeServico(
-            clienteSelecionado.nome,
-            servicoSelecionado.nome,
+            clienteSelecionado,
+            servicoSelecionado,
             dataProduto,
             servicoSelecionado.preco
             

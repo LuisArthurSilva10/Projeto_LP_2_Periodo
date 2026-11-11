@@ -8,9 +8,9 @@ REQUISITOS:
     .Conter uma ferramenta de consulta de produtos
     .Conter uma ferramenta de consulta de ordens de serviço
     .Conter uma ferramenta de consulta de vendas(O melhor comprador em determinado intervalo de tempo, o produto que mais vende, etc)
-    .Conter uma ferramenta de remoção de clientes
-    .Conter uma ferramenta de remoção de produtos
-    .Conter uma ferramenta de remoção de vendas
+    .Conter uma ferramenta de edição/remoção de clientes
+    .Conter uma ferramenta de edição/remoção de produtos
+    .Conter uma ferramenta de edição/remoção de vendas
 
  -NÃO-FUNCIONAIS:
     .Ser um software compacto(<100 Mb)
@@ -18,8 +18,3 @@ REQUISITOS:
     .Desempenho(Computar as transações em segundos)
     .Ser um software portátil
     .Disponibilidade offline (Não necessitando de internet para concluir as demandas)
-
-
-
-
-n

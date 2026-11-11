@@ -1,8 +1,8 @@
 import edicaoProduto
-import consultaCliente
-import consultaOrdem
-import consultaVendaProduto
-import consultaVendaOrdem
+import edicaoCliente
+import edicaoOrdem
+import edicaoVendasProdutos
+import edicaoVendasOrdem
 
 def opcoesConsulta():
     print("\n\n==ÁREA DE EDIÇÃO==")
@@ -20,13 +20,13 @@ def edicaoUniversal():
           if(opcaoCadastro==1):
              edicaoProduto.funcaoEdicaoProduto()
           elif(opcaoCadastro==2):
-             consultaCliente.funcaoConsultaCliente()
+             edicaoCliente.funcaoEdicaoCliente()
           elif(opcaoCadastro==3):
-             consultaOrdem.funcaoConsultaOrdem()
+             edicaoOrdem.funcaoEdicaoOrdem()
           elif(opcaoCadastro==4):
-              consultaVendaProduto.funcaoVendaProduto()
+              edicaoVendasProdutos.funcaoEdicaoVendasProdutos()
           elif(opcaoCadastro==5):
-              consultaVendaOrdem.funcaoVendaOrdem()
+               edicaoVendasOrdem.funcaoEdicaoVendasOrdem()
           elif(opcaoCadastro==0):
              break
           else:

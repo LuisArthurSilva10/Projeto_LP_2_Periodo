@@ -12,6 +12,7 @@ def funcaoEdicaoProduto():
     print("1-Nome: ")
     print("2-Quantidade")
     print("3-Preço ")
+    print("4-Remover")
     opcaoEdicao=int(input())
     if(opcaoEdicao==1):
       print("Digite o nome para alterar: ")
@@ -24,6 +25,9 @@ def funcaoEdicaoProduto():
     elif(opcaoEdicao==3):
       print("Digite o preço para alterar: ")
       repoProdutos.buscar_por_id(escolha).preco=float(input())
+      print("Produto editado com sucesso.")
+    elif(opcaoEdicao==4):
+      repoProdutos.remover(escolha)
       print("Produto editado com sucesso.")
 
     print("Deseja editar outro produto?(s/n)")
