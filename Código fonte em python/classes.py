@@ -1,4 +1,6 @@
 from itertools import count
+import os
+
 
 class Produto:
     _ids=count(1)  
@@ -12,12 +14,14 @@ class Produto:
 
 class RepositorioProdutos:
     def __init__(self):
-        self._produtos = {} 
+        self._produtos = {}
 
     def adicionar(self, produto) -> bool:
         if produto.id in self._produtos:                
             return False   
-        self._produtos[produto.id] = produto            
+        self._produtos[produto.id] = produto    
+        with open("produtoBanco.txt","a") as arquivo:
+            arquivo.write(f"Id:{produto.id},Nome:{produto.nome},Quantidade:{produto.quantidade},Preço{produto.preco}")         
         return True
 
     def remover(self, id_produto) -> bool:
@@ -52,22 +56,23 @@ class RepositorioServico:
     def adicionar(self, servico) -> bool:
         if servico.id in self._servico:                
             return False                                
-        self._servico[servico.id] = servico            
+        self._servico[servico.id] = servico
+        with open("ordemBanco.txt","a") as arquivo:
+            arquivo.write(f"Id:{servico.id},Nome:{servico.nome},Preço:{servico.preco}\n")               
         return True
 
     def remover(self, id_servico) -> bool:
         return self._servico.pop(id_servico, None) is not None
 
-    # ---------- CONSULTAR (leitura) ----------
     def buscar_por_id(self, id_servico):
-        return self._servico.get(id_servico)            # O(1) via índice
+        return self._servico.get(id_servico)         
 
     def buscar_por_nome(self, trecho):
         trecho = trecho.lower()
         return [c for c in self._servico.values() if trecho in c.nome.lower()]
 
     def listar(self):
-        return list(self._servico.values())             # visão derivada
+        return list(self._servico.values())     
 
     def __len__(self):
         return len(self._servico)
@@ -92,15 +97,16 @@ class RepositorioClientes:
             return False
         if cliente.cpf != "0" and self.buscar_por_cpf(cliente.cpf):
             return False                                
-        self._clientes[cliente.id] = cliente            
+        self._clientes[cliente.id] = cliente
+        with open("clienteBanco.txt","a") as arquivo:
+                arquivo.write(print(f"Id:{cliente.id},nome:{cliente.nome},contato{cliente.contato},cpf{cliente.cpf}\n"))                 
         return True
 
     def remover(self, id_cliente) -> bool:
         return self._clientes.pop(id_cliente, None) is not None
 
-    # ---------- CONSULTAR (leitura) ----------
     def buscar_por_id(self, id_cliente):
-        return self._clientes.get(id_cliente)            # O(1) via índice
+        return self._clientes.get(id_cliente)    
 
     def buscar_por_cpf(self, cpf):
         return next((c for c in self._clientes.values() if c.cpf == cpf), None)
@@ -110,8 +116,8 @@ class RepositorioClientes:
         return [c for c in self._clientes.values() if trecho in c.nome.lower()]
 
     def listar(self):
-        return list(self._clientes.values())             # visão derivada
-
+        return list(self._clientes.values())
+    
     def __len__(self):
         return len(self._clientes)
 
@@ -129,12 +135,14 @@ class vendaDeProduto:
 
 class RepositorioVendasProdutos:
     def __init__(self):
-        self._vendas = {}        
-
+        self._vendas = {} 
+           
     def adicionar(self, venda) -> bool:
         if venda.id in self._vendas:
             return False
         self._vendas[venda.id] = venda
+        with open("vendaProdutoBanco.txt","a") as arquivo:
+            arquivo.write(print(f"{venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.produto.id},{venda.produto.nome},{venda.produto.preco},{venda.produto.quantidade},total:{venda.total}, data:{venda.data}\n"))
         return True
     
     def remover(self, id_venda) -> bool:
@@ -170,28 +178,27 @@ class RepositorioVendasServico:
         self._vendas = {}          
 
     def adicionar(self, venda) -> bool:
-        if venda.id in self._vendas:                 # já indexada?
+        if venda.id in self._vendas:             
             return False
         
-        self._vendas[venda.id] = venda               # indexa e guarda
+        self._vendas[venda.id] = venda
+        with open("vendaOrdemBanco.txt","a") as arquivo:
+                    arquivo.write(f"Id: {venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.produto.id},{venda.produto.nome},{venda.produto.preco},{venda.produto.quantidade},total:{venda.total}, data:{venda.data}")               
         return True
 
     def remover(self, id_venda) -> bool:
         return self._vendas.pop(id_venda, None) is not None
 
-    # ---------- CONSULTAR (leitura) ----------
     def buscar_por_id(self, id_venda):
-        return self._vendas.get(id_venda)            # O(1) via índice
+        return self._vendas.get(id_venda)         
 
     def buscar_por_cliente(self, cliente):
-        """Todas as vendas de um cliente (por id do cliente)."""
         return [v for v in self._vendas.values()
                 if getattr(v, "cliente", None) is not None
                 and v.cliente.id == cliente.id]
 
     def listar(self):
-        return list(self._vendas.values())           # visão derivada
-
+        return list(self._vendas.values()) 
     def __len__(self):
         return len(self._vendas)
 

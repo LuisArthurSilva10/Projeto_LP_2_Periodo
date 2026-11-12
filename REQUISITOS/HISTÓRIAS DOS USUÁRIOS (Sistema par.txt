@@ -6,8 +6,6 @@ Conversa: Entre o desenvolvedor e o cliente foi discutido sobre as funcionalidad
 
 Confirmação: 
 
-Pergunta (desenvolvedor):Em uma situação que você está cadastrando uma ordem de serviço é necessário ter a integração com a venda de produtos?
-Resposta (cliente): Sim
 Pergunta (desenvolvedor):Em uma situação que você está cadastrando uma venda de produtos é necessário ter a integração com ordem de serviço?
 Resposta (cliente): Não
 Pergunta (desenvolvedor):É necessário ter uma UI(Interface de usuário) que contenha algo além de texto?(Caso sim piora no desempenho)
