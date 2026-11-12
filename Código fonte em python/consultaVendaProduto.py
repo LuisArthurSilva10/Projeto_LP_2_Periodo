@@ -61,7 +61,7 @@ def funcaoMelhoresVendasTotal(compradores):
     n=len(compradores)
     for i in range(n):
         for j in range(n-i-1):
-            if(compradores[j].preco<compradores[j+1].preco):
+            if(compradores[j].total<compradores[j+1].total):
                 temp=compradores[j]
                 compradores[j]=compradores[j+1]
                 compradores[j+1]=temp
@@ -138,11 +138,11 @@ def funcaoVendaProduto():
                 funcaoFiltrarDia(repoVendasProdutos.listar(),ano,mes,diaInicial,diaFinal)
         
         elif(opcao==4):
-            lista=funcaoMelhoresVendasTotal(repoVendasProdutos)
+            lista=funcaoMelhoresVendasTotal(repoVendasProdutos.listar())
             for i in lista:
                 print(i)
-        elif(opcao==4):
-            lista2=funcaoMelhoresVendasQuantidade(repoVendasProdutos)
+        elif(opcao==5):
+            lista2=funcaoMelhoresVendasQuantidade(repoVendasProdutos.listar())
             for i in lista2:
                 print(i)
             

@@ -99,7 +99,7 @@ class RepositorioClientes:
             return False                                
         self._clientes[cliente.id] = cliente
         with open("clienteBanco.txt","a") as arquivo:
-                arquivo.write(print(f"Id:{cliente.id},nome:{cliente.nome},contato{cliente.contato},cpf{cliente.cpf}\n"))                 
+                arquivo.write(f"Id:{cliente.id},nome:{cliente.nome},contato{cliente.contato},cpf{cliente.cpf}\n")                 
         return True
 
     def remover(self, id_cliente) -> bool:
@@ -142,7 +142,7 @@ class RepositorioVendasProdutos:
             return False
         self._vendas[venda.id] = venda
         with open("vendaProdutoBanco.txt","a") as arquivo:
-            arquivo.write(print(f"{venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.produto.id},{venda.produto.nome},{venda.produto.preco},{venda.produto.quantidade},total:{venda.total}, data:{venda.data}\n"))
+            arquivo.write(f"{venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.produto.id},{venda.produto.nome},{venda.produto.preco},{venda.produto.quantidade},total:{venda.total}, data:{venda.data}\n")
         return True
     
     def remover(self, id_venda) -> bool:
@@ -183,7 +183,7 @@ class RepositorioVendasServico:
         
         self._vendas[venda.id] = venda
         with open("vendaOrdemBanco.txt","a") as arquivo:
-                    arquivo.write(f"Id: {venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.produto.id},{venda.produto.nome},{venda.produto.preco},{venda.produto.quantidade},total:{venda.total}, data:{venda.data}")               
+                    arquivo.write(f"Id: {venda.id},comprador:{venda.cliente.id},{venda.cliente.nome},{venda.cliente.contato},{venda.cliente.cpf},produto: {venda.servico.id},{venda.servico.nome},{venda.servico.preco},total:{venda.total}, data:{venda.data}")               
         return True
 
     def remover(self, id_venda) -> bool:

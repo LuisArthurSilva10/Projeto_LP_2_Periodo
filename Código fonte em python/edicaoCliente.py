@@ -9,8 +9,8 @@ def funcaoEdicaoCliente():
     escolha=int(input())
     print("O que deseja alterar: ")
     print("1-Nome: ")
-    print("2-Quantidade")
-    print("3-Preço ")
+    print("2-Contato")
+    print("3-CPF ")
     print("4-Remover")
     opcaoEdicao=int(input())
     if(opcaoEdicao==1):

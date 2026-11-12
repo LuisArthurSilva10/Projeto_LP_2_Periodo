@@ -6,9 +6,7 @@ def funcaoCadastroOrdem():
         nome    = input("Digite o nome da ordem de serviço: ")
         preco = float(input("Digite o preço da ordem de serviço: "))
 
-        servico = OrdemDeServico(nome,preco)
-
-        if repoServico.adicionar(servico):
+        if repoServico.adicionar(OrdemDeServico(nome,preco)):
             print("Cadastro feito com sucesso.")
         else:
             print("Ordem de serviço já cadastrada (ID duplicado).")

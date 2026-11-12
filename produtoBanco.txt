@@ -1,1 +1,1 @@
-Id:1,Nome:Cabo tipo c,Quantidade:15,Preço12.0Id:1,Nome:Cabo tipo c,Quantidade:10,Preço15.0
+Id:1,Nome:cabo tipo c,Quantidade:10,Preço15.0
