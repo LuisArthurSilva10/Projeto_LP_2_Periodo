@@ -1,2 +1,0 @@
-1,comprador:1,luis,luis@gmail.com,0,produto: 1,cabo tipo c,15.0,8,total:30.0, data:11/11/2026
-2,comprador:2,francisco,francisco@gmail.com,0,produto: 1,cabo tipo c,15.0,5,total:45.0, data:12/11/2026

@@ -1,2 +1,0 @@
-Id:1,nome:luis,contatoluis@gmail.com,cpf0
-Id:2,nome:francisco,contatofrancisco@gmail.com,cpf0

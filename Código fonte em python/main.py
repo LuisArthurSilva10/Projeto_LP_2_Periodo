@@ -3,7 +3,7 @@ import consulta
 import venda
 import edicao
 
-def exibirOpcoes():
+def exibirOpcoes(): 
     print("\n\n--Sistema para Assistência Técnica--")
     print("1-Cadastro")
     print("2-Consulta")

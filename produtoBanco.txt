@@ -1,1 +1,0 @@
-Id:1,Nome:cabo tipo c,Quantidade:10,Preço15.0
